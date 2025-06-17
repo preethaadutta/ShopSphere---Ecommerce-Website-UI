@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ShopSphere | Checkout</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .cart-container {
+      /*max-width: 800px;*/
+      /*margin: 30px auto;*/
+      padding: 60px 20px;
+      /*background: #f9f9f9;*/
+      /*border-radius: 10px;*/
+      text-align: center;
+
+      inset: 0;
+  background: 
+    radial-gradient(at top left, #d071ba, transparent 50%),
+    radial-gradient(at bottom left, #581845, transparent 60%),
+    radial-gradient(at top right, #ffe48b, transparent 60%),
+    radial-gradient(at bottom right, #b19b86, transparent 50%);
+  /*background-color: #f5d1e0;*/
+  background-blend-mode: screen;
+  /*filter: blur(60px);*/
+  z-index: -1;
+  min-height: 90vh;
+
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #ccc;
+      padding: 10px 0;
+    }
+
+    .cart-item:last-child {
+      border: none;
+    }
+
+    .checkout-btn {
+      margin-top: 20px;
+      padding: 10px 15px;
+      background: #f8ce43;
+      color: #581845;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+
+      padding: 0.8rem 2rem;
+  background: #f8ce43;
+  color: #581845;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 30px;
+  transition: 0.3s ease;
+    }
+    .checkout-btn:hover{
+      background: #FFD700;
+    }
+
+    .payment-form {
+      display: none;
+      margin-top: 30px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+      margin: 30px;
+    }
+
+    .payment-form input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .payment-form button {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+
+      padding: 0.8rem 2rem;
+  background: #f8ce43;
+  color: #581845;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 30px;
+  transition: 0.3s ease;
+    }
+    .payment-form button:hover{
+      background: #FFD700;
+    }
+
+    .success-message {
+      color: green;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .thank-you-message {
+        text-align: center;
+        margin-top: 15px;
+        font-size: 1.1em;
+        color: #333;
+        font-weight: 500;
+        background-color: #e8fce8;
+        border: 1px solid #b2e2b2;
+        padding: 12px;
+        border-radius: 6px;
+    }
+
+    .cart-item button {
+        background-color: #dc3545;       /* Bootstrap-style red */
+        color: #fff;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 0.9em;
+        margin-left: 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    .cart-item button:hover {
+        background-color: #b02a37;
+    }
+
+    @media (max-width: 600px) {
+      .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <div class="logo"><a href="index.html">ShopSphere</a></div>
+            <!-- Hamburger icon -->
+            <button class="hamburger" onclick="toggleMenu()">☰</button>
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="contact.html">Contact</a>
+                <a href="checkout.html">Cart (<span id="basket-count">0</span>)</a>
+            </nav>
+        </div>
+    </header>
+
+  <div class="cart-container">
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <h3>Total: £<span id="total-amount">0</span></h3>
+    <button class="checkout-btn" onclick="showCheckoutForm()">Show Checkout</button>
+
+    <div class="payment-form" id="payment-form">
+      <h3>Payment Details</h3>
+      <input type="text" id="card-name" placeholder="Cardholder Name" required>
+      <input type="text" id="card-number" placeholder="Card Number (16 digits)" maxlength="16">
+      <input type="month" id="expiry-date" placeholder="Expiry Date (mm-yyyy)">
+      <input type="text" id="cvv" placeholder="CVV (3 digits)" maxlength="3">
+      <button onclick="payNow()">Pay Now</button>
+      <!--<p class="success-message" id="success-msg"></p>-->
+    </div>
+    <!-- SHOW SUCCESS MESSAGE HERE -->
+    <p class="success-message" id="success-msg" style="text-align:center;"></p>
+    <p class="thank-you-message" id="thank-you-msg" style="display: none;"></p>
+
+  </div>
+
+
+  <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-overlay">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h2>ShopSphere</h2>
+                    <p>Your favorite place for quality products and great deals.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="checkout.html">Checkout</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Follow Us On</h3>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com"><img src="facebook.png" alt="Facebook" /></a>
+                        <a href="https://www.youtube.com"><img src="youtube.png" alt="YouTube" /></a>
+                        <a href="https://www.instagram.com"><img src="instagram.png" alt="Instagram" /></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 ShopSphere. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+  <script>
+    let basket = JSON.parse(localStorage.getItem("basket")) || [];
+    const cartItemsDiv = document.getElementById("cart-items");
+    const totalSpan = document.getElementById("total-amount");
+    const form = document.getElementById("payment-form");
+    const successMsg = document.getElementById("success-msg");
+
+    let total = 0;
+
+    function renderCart() {
+      cartItemsDiv.innerHTML = "";
+      total = 0;
+      basket.forEach((item, index) => {
+        const div = document.createElement("div");
+        div.className = "cart-item";
+        div.innerHTML = `
+          <div><strong>${item.name}</strong> <small>(${item.category})</small></div>
+          <div>£${item.price} <button onclick="removeItem(${index})">Remove</button></div>
+        `;
+        total += parseFloat(item.price);
+        cartItemsDiv.appendChild(div);
+      });
+      totalSpan.innerText = total.toFixed(2);
+    }
+
+    function removeItem(index) {
+      const removed = basket.splice(index, 1)[0];
+      localStorage.setItem("basket", JSON.stringify(basket));
+      alert(`${removed.name} removed from basket.`);
+      renderCart();
+    }
+
+    function showCheckoutForm() {
+      form.style.display = "block";
+    }
+
+    /*
+    function payNow() {
+      const name = document.getElementById("card-name").value.trim();
+      const number = document.getElementById("card-number").value.trim();
+      const expiry = document.getElementById("expiry-date").value.trim();
+      const cvv = document.getElementById("cvv").value.trim();
+
+      if (!name || number.length !== 16 || !expiry || cvv.length !== 3) {
+        alert("Please enter valid payment details.");
+        return;
+      }
+
+      localStorage.removeItem("basket");
+      basket = [];
+      renderCart();
+      form.style.display = "none";
+      successMsg.innerText = `Payment successful! You paid £${total.toFixed(2)}`;
+    }
+    */
+    function payNow() {
+    const name = document.getElementById("card-name").value.trim();
+    const number = document.getElementById("card-number").value.trim();
+    const expiry = document.getElementById("expiry-date").value.trim();
+    const cvv = document.getElementById("cvv").value.trim();
+
+    if (!name || number.length !== 16 || !expiry || cvv.length !== 3) {
+    alert("Please enter valid payment details.");
+    return;
+    }
+
+    // ✅ Store total BEFORE clearing basket
+    const finalAmount = total.toFixed(2);
+
+    localStorage.removeItem("basket");
+    basket = [];
+    renderCart();
+    form.style.display = "none";
+
+    // ✅ Now display accurate amount
+    successMsg.innerText = `Payment successful! You paid £${finalAmount}`;
+
+    // ✅ Show thank-you message
+    const thankYou = document.getElementById("thank-you-msg");
+    thankYou.style.display = "block";
+    thankYou.innerText = "Thank you for shopping with us! We hope to see you again soon.";
+
+    // Hide "Show Checkout" button after successful payment
+    const checkoutButton = document.querySelector(".checkout-btn");
+    checkoutButton.style.display = "none";
+
+    // Redirect after 5 seconds
+    setTimeout(() => {
+        window.location.href = "index.html";
+    }, 5000);
+    }
+
+
+    renderCart();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ShopSphere | Home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo"><a href="index.html">ShopSphere</a></div>
+            <!-- Hamburger icon -->
+            <button class="hamburger" onclick="toggleMenu()">☰</button>
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="contact.html">Contact</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Products ▼</button>
+                    <div class="dropdown-content">
+                        <a href="#" onclick="filterCategory('All')">All</a>
+                        <a href="#" onclick="filterCategory('Electronics')">Electronics</a>
+                        <a href="#" onclick="filterCategory('Clothing')">Clothing</a>
+                        <a href="#" onclick="filterCategory('Food')">Food</a>
+                    </div>
+                </div>
+                <a href="checkout.html">Cart (<span id="basket-count">0</span>)</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="banner" id="banner">
+        <div class="banner-content">
+            <div class="text-content">
+                <h1 class="title">Discover Your Perfect Style</h1>
+                <p class="subtitle">Explore our latest collection of fashion essentials that redefine elegance and comfort.</p>
+                <a href="#featured-products" class="btn">Shop Now</a>
+            </div>
+            <div class="image-content">
+                <img src="final1.png" alt="Banner Product">
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-products" id="featured-products">
+        <h2>Featured Products</h2>
+        <p class="subtitle">Check out the latest and most popular picks just for you</p>
+        <div class="product-cards">
+            <!-- Example Product Card -->
+            <div class="product-card">
+                <img src="milk-rbg.png" alt="Milk">
+                <h3>Milk</h3>
+                <p class="category">Food</p>
+                <p class="price">£2</p>
+                <button onclick="addToBasketByDetails('Milk', 2, 'Food')">Add to Basket</button>
+            </div>
+            <div class="product-card">
+                <img src="chocolate-rbg.png" alt="Chocolate">
+                <h3>Chocolate</h3>
+                <p class="category">Food</p>
+                <p class="price">£5</p>
+                <button onclick="addToBasketByDetails('Chocolate', 5, 'Food')">Add to Basket</button>
+            </div>
+            <div class="product-card">
+                <img src="smartphone-rbg.png" alt="Smartphone">
+                <h3>Smartphone</h3>
+                <p class="category">Electronics</p>
+                <p class="price">£499</p>
+                <button onclick="addToBasketByDetails('Smartphone', 499, 'Electronics')">Add to Basket</button>
+            </div>
+            <div class="product-card">
+                <img src="sneakers-rbg.png" alt="Sneakers">
+                <h3>Sneakers</h3>
+                <p class="category">Clothing</p>
+                <p class="price">£60</p>
+                <button onclick="addToBasketByDetails('Sneakers', 60, 'Clothing')">Add to Basket</button>
+            </div>
+            <div class="product-card">
+                <img src="headphone-rbg.png" alt="Headphones">
+                <h3>Headphones</h3>
+                <p class="category">Electronics</p>
+                <p class="price">£45</p>
+                <button onclick="addToBasketByDetails('Headphones', 45, 'Electronics')">Add to Basket</button>
+            </div>
+            <div class="product-card">
+                <img src="laptop-rbg.png" alt="Laptop">
+                <h3>Laptop</h3>
+                <p class="category">Electronics</p>
+                <p class="price">£799</p>
+                <button onclick="addToBasketByDetails('Laptop', 799, 'Electronics')">Add to Basket</button>
+            </div>
+            <div class="product-card">
+                <img src="jeans-rbg.png" alt="Jeans">
+                <h3>Jeans</h3>
+                <p class="category">Clothing</p>
+                <p class="price">£35</p>
+                <button onclick="addToBasketByDetails('Jeans', 35, 'Clothing')">Add to Basket</button>
+            </div>
+            <div class="product-card">
+                <img src="t-shirt-rbg.png" alt="T-Shirt">
+                <h3>T-Shirt</h3>
+                <p class="category">Clothing</p>
+                <p class="price">£15</p>
+                <button onclick="addToBasketByDetails('T-Shirt', 15, 'Clothing')">Add to Basket</button>
+            </div>
+            <div class="product-card">
+                <img src="apple-rbg.png" alt="Apple">
+                <h3>Apple</h3>
+                <p class="category">Food</p>
+                <p class="price">£1</p>
+                <button onclick="addToBasketByDetails('Apple', 1, 'Food')">Add to Basket</button>
+            </div>
+            <div class="product-card">
+                <img src="bread-rbg.png" alt="Bread">
+                <h3>Bread</h3>
+                <p class="category">Food</p>
+                <p class="price">£1.5</p>
+                <button onclick="addToBasketByDetails('Bread', 1.5, 'Food')">Add to Basket</button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-overlay">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h2>ShopSphere</h2>
+                    <p>Your favorite place for quality products and great deals.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="checkout.html">Checkout</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Follow Us On</h3>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com"><img src="facebook.png" alt="Facebook" /></a>
+                        <a href="https://www.youtube.com"><img src="youtube.png" alt="YouTube" /></a>
+                        <a href="https://www.instagram.com"><img src="instagram.png" alt="Instagram" /></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 ShopSphere. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!--
+    <main>
+        <section id="product-list" class="product-grid">
+        </section>
+    </main>
+    -->
+
+    <script src="products.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

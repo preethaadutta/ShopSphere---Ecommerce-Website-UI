@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ShopSphere | Contact</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    .contact-section {
+      text-align: center;
+      padding: 40px 20px;
+
+/*background: radial-gradient(circle at center,
+  #f8ce43 0%,
+  #f8ce43 25%,
+  #e674cc 45%,
+  #8d339d 70%,
+  #581845 100%);
+*/
+/*
+background: 
+  radial-gradient(circle at center,
+    #f8ce43 0%,
+    #f8ce43 25%,
+    #e674cc 45%,
+    #8d339d 70%,
+    #581845 100%),
+  
+  radial-gradient(circle at top left,
+    #f8ce43 0%,
+    transparent 40%),
+
+  radial-gradient(circle at top right,
+    #f8ce43 0%,
+    transparent 40%),
+
+  radial-gradient(circle at bottom left,
+    #f8ce43 0%,
+    transparent 40%),
+
+  radial-gradient(circle at bottom right,
+    #f8ce43 0%,
+    transparent 40%);
+
+      backdrop-filter: blur(6px);
+
+      */
+
+      inset: 0;
+  background: 
+    radial-gradient(at top left, #d071ba, transparent 50%),
+    radial-gradient(at bottom left, #581845, transparent 60%),
+    radial-gradient(at top right, #ffe48b, transparent 60%),
+    radial-gradient(at bottom right, #b19b86, transparent 50%);
+  /*background-color: #f5d1e0;*/
+  background-blend-mode: screen;
+  /*filter: blur(60px);*/
+  z-index: -1;
+
+
+    }
+
+.contact-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  position: relative;
+  color: #581845;
+}
+
+.contact-section h1::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #581845;
+  margin: 10px auto;
+}
+
+.subtext {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #5818458c;
+  padding: 40px 20px;
+  gap: 40px;
+}
+
+.contact-info {
+  /*flex: 1 1 300px;*/
+  text-align: left;
+  max-width: 400px;
+}
+
+.contact-info h2 {
+  margin-bottom: 20px;
+}
+
+.contact-info p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #F8F5F2;
+  margin: 10px 0;
+}
+
+.contact-form {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  font-size: 1rem;
+  width: 100%;
+  resize: none;
+}
+
+.contact-form textarea {
+  height: 120px;
+  border-radius: 20px;
+}
+
+.contact-form button {
+  padding: 15px;
+  background-color: #f8ce43;
+  border: none;
+  color: #581845;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #FFD700;
+}
+
+.response-message {
+  margin-top: 10px;
+  color: green;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-info,
+  .contact-form {
+    text-align: center;
+  }
+}
+  </style>
+
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo"><a href="index.html">ShopSphere</a></div>
+            <!-- Hamburger icon -->
+            <button class="hamburger" onclick="toggleMenu()">☰</button>
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="contact.html">Contact</a>
+                <a href="checkout.html">Cart (<span id="basket-count">0</span>)</a>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="contact-section">
+        <h1>Get in Touch</h1>
+        <p class="subtext">Have questions or need support? We're here to help you!</p>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Contact Info</h2>
+                <p><strong>Phone:</strong> +1 (800) 123-4567</p>
+                <p><strong>Email:</strong> support@shopmate.com</p>
+                <p><strong>Address:</strong> 123 Market Street, New York, NY 10001</p>
+            </div>
+            <div class="contact-form">
+                <input type="text" id="name" placeholder="Your Name">
+                <input type="email" id="email" placeholder="Your Email">
+                <textarea id="message" placeholder="Your Message"></textarea>
+                <button onclick="sendMessage()">Send Message</button>
+                <p id="responseMsg" class="response-message"></p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-overlay">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h2>ShopSphere</h2>
+                    <p>Your favorite place for quality products and great deals.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="checkout.html">Checkout</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Follow Us On</h3>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com"><img src="facebook.png" alt="Facebook" /></a>
+                        <a href="https://www.youtube.com"><img src="youtube.png" alt="YouTube" /></a>
+                        <a href="https://www.instagram.com"><img src="instagram.png" alt="Instagram" /></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 ShopSphere. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    function sendMessage() {
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+  const responseMsg = document.getElementById('responseMsg');
+
+  if (!name || !email || !message) {
+    responseMsg.style.color = 'red';
+    responseMsg.textContent = "Please fill out all fields.";
+    return;
+  }
+
+  // Simulate message send success
+  responseMsg.style.color = 'green';
+  responseMsg.textContent = "Thank you for contacting us! We'll get back to you soon.";
+
+  // Optionally reset the form
+  document.getElementById('name').value = "";
+  document.getElementById('email').value = "";
+  document.getElementById('message').value = "";
+}
+
+    </script>
+    <script src="products.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
